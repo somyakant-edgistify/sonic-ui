@@ -6,7 +6,6 @@
   .foot{
    height: 12%;
   }
-  
   .socialLink{
    width: 20%;
    height: 100%;
@@ -32,14 +31,13 @@
 }
 .imageContainer {
  position: relative;
- width: 29%; 
- height: 12%;
+ width: 350px; 
+ height: 90px;
 }
 .logo{
- height: 90% !important;
- width: 90% !important;
+ height: 100% !important;
+ width: 100% !important;
  object-fit: cover;
- /* border: 1px solid white; */
  
 }
 
@@ -220,15 +218,14 @@
    margin-top: 1%;
  }
  .subHeader{
-  margin-top: -4% !important;
-  width: 60%;
+   width: 60%;
  }
  .signupBox{
    width:70%;
    margin-top: 1%;
  }
  .heroText{
-   margin-top: 3% !important;
+   margin-top: 10% !important;
    width: 90%;
  }
  .signupContainer{
@@ -258,14 +255,9 @@
 }
 
 @media (max-width: 600px){
-  .imageContainer {
-   position: relative;
-   width: 45%; 
-   height: 12%;
-  }
  .logo{
-   width: 90%;
-   height: 90%;
+   width:100px;
+   height: 30px;
  }
  .socialLink{
    width: 25%;
@@ -279,12 +271,6 @@
 }
 
 @media (max-width:500px) {
-  .imageContainer {
-    /* border: 1px solid red; */
-   position: relative;
-   width: 29%; 
-   height: 12%;
-  }
  .logo{
    margin-top: 4%;
    width: 80px;
