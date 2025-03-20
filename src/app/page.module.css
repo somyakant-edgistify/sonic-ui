@@ -30,6 +30,7 @@
  box-sizing: border-box;
 }
 .imageContainer {
+  border: 1px solid red;
  position: relative;
  width: 350px; 
  height: 90px;
@@ -38,6 +39,7 @@
  height: 100% !important;
  width: 100% !important;
  object-fit: cover;
+ border: 1px solid white;
  
 }
 
