@@ -30,16 +30,16 @@ export default function HomePage() {
 
   const handleFormSubmit = async(e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formDetails);
     let params = 
       {
         "name": formDetails.name ,
         "email": formDetails.email,
         "mobileNumber": formDetails.phone,
-        "organization": formDetails.company
+        "organization": formDetails.company,
+        "city":formDetails.city,
       }
     const res =  await registerationAPI(params);
-    console.log(res);
+
     if(res.success){
       setColorSet('green');
       setSnackbarMessage(res.message);
@@ -48,7 +48,7 @@ export default function HomePage() {
     }
     else{
       setColorSet('red');
-      setSnackbarMessage('Something went wrong!');
+      setSnackbarMessage('Invalid Credentials!');
       setSeverity('error');
       setSuccessSnakbar(true);
     }
@@ -57,16 +57,16 @@ export default function HomePage() {
   };
 
   return (
-    <>
+    <div>
     <Box className={styles.container}>
       {/* Header */}
-      <Image src='/logos/sonic_logo.png' alt="sonic-logo" height={150} width={50} className={styles.logo}/>
+      <Image src='/logos/sonic_logo.png' alt="sonic-logo" height={130} width={38} className={styles.logo}/>
       <Typography variant="subtitle1" className={styles.subHeader} sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem', lg:'1.2rem',xl:'1.5rem'}}}>
         Same-day deliveries engineered for fast-growing D2C brands
       </Typography>
 
       {/* Hero Section */}
-      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'1.5rem', sm:'2.5rem',md:'3rem', lg:'4.5rem'}}} >
+      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'2.5rem', sm:'3.5rem',md:'4rem', lg:'4rem',xl:'6rem'}}} >
         Join brands that know speed isn’t optional - <span className={styles.heroHighlight}>it’s essential!</span>
       </Typography>
 
@@ -74,9 +74,10 @@ export default function HomePage() {
 
       {/* Signup Section */}
       <Box className={styles.signupContainer}>
-        <Typography variant="h6" sx={{fontSize:{ xs:'0.8rem',sm:'0.8rem',md:'1rem', lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:400, color:'#C2C2C2'}}>Be first to be fast!</Typography>
-        <Typography variant="body2" sx={{fontSize:{xs:'0.5rem',sm:'0.6rem',md:'0.8rem' ,lg:'1rem' ,xl:'1.5rem', }, fontWeight:700, color:'#C2C2C2'}}>Sign up now and get 50% off on shipping for the first 3 months</Typography>
-
+        <Box>
+        <Typography variant="h6" sx={{fontSize:{ xs:'0.8rem',sm:'0.8rem',md:'1rem', lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:400, color:'#C2C2C2', marginTop:'2%'}}>Be first to be fast!</Typography>
+        <Typography variant="body2" sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem' ,lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:700, color:'#C2C2C2'}}>Sign up now and get 50% off on shipping for the first 3 months</Typography>
+        </Box>
         <Box className={styles.signupBox}>
           <form style={{ width: "100%" }} onSubmit={handleFormSubmit}>
             <Box className={styles.formContainer}>
@@ -100,7 +101,7 @@ export default function HomePage() {
 
             <Box className={styles.formContainer}>
             <input 
-                placeholder="Email"
+                placeholder="Email*"
                 name="email" 
                 value={formDetails.email} 
                 onChange={handleChange} 
@@ -121,7 +122,7 @@ export default function HomePage() {
 
             <Box className={styles.formContainer}>
             <input 
-                placeholder="Company"
+                placeholder="Company*"
                 name="company" 
                 value={formDetails.company} 
                 onChange={handleChange}
@@ -140,7 +141,7 @@ export default function HomePage() {
           </form>
         </Box>
 
-        <Typography variant="body2" className={styles.footerText} sx={{fontSize:{xs:'1.2rem',sm:'1.5rem'}}}>
+        <Typography variant="body2" className={styles.footerText} sx={{fontSize:{xs:'1.2rem',sm:'1rem', md:'1.5rem'}}}>
           From cart to doorstep <span style={{ color: "#E6FF00" }}>in hours</span>
         </Typography>
         <Box className={styles.foot}>
@@ -148,13 +149,13 @@ export default function HomePage() {
         © 2025 OptiSupply Chain Solution Pvt Ltd<br/> <span>All rights reserved.</span>
         </Typography>
         <Box className={styles.socialLink}>
-           <Typography sx={{fontSize:{xs:'0.5rem',sm:'0.6rem',md:'0.8rem',lg:'1rem'}}}>Follow us on</Typography>
-           <Link>
-           <LinkedInIcon sx={{ color:'white'}}/>
-           </Link>
-           <Link sx={{ color:'white'}}>
-           <WhatsAppIcon/>
-           </Link>
+            <Typography sx={{fontSize:{xs:'0.5rem',sm:'0.6rem',md:'0.8rem',lg:'1rem'}}}>Follow us on</Typography>
+            <Link href="https://www.linkedin.com/company/105163621/admin/dashboard/" target="_blank" rel="noopener noreferrer">
+              <LinkedInIcon sx={{ color: 'white' }} />
+            </Link>
+            <Link href="https://wa.me/8169319152" target="_blank" rel="noopener noreferrer">
+              <WhatsAppIcon sx={{ color: 'white' }} />
+            </Link>
         </Box>
         </Box>
       </Box>
@@ -166,6 +167,6 @@ export default function HomePage() {
         message={snackbarMessage} 
         success={severity}
       />
-    </>
+    </div>
   );
 }

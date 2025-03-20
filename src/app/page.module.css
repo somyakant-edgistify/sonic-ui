@@ -1,4 +1,3 @@
-/* General Page Styles */
 .container {
   background-color: #000;
   color: white;
@@ -8,26 +7,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;  
-  width: 100vw;   
+  height: 100dvh;  
+  width: 100vw;
+  box-sizing: border-box;
+}
+.logo{
+  padding-top: 1% !important;
 }
 
 .subHeader {
   font-family: 'Inter', sans-serif;
-  font-size: 24px;
+  margin-top: 1% !important;
   color:#C2C2C2;
 }
 
 .heroText {
-  margin-top: 40px !important;
+  margin-top: 1% !important;
   color: #FFFFFF4A;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  line-height: 110.00000000000001%;
+  line-height: 10px;
   letter-spacing: -4.19px;
   text-align: center;
   vertical-align: middle;
-  width: 70%;
+  width: 80%;
 }
 
 .heroHighlight {
@@ -40,11 +43,11 @@
   border-radius: 40px 40px 0 0;
   margin: auto;
   width: 100vw;
-  height: 50vh; 
+  height: 55vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   box-sizing: border-box;
   font-family: 'Inter';
 }
@@ -54,7 +57,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px ;
+  margin-bottom: 1% ;
 }
 
 /* Form Elements */
@@ -95,6 +98,7 @@
   border-radius: 10px !important;
   width: 100% !important;
   padding: 0px 10px;
+  color: #6D6D6D;
 }
 
 /* Button */
@@ -129,9 +133,7 @@
 }
 
 /* Footer */
-.footerText {
-  margin-top: 1%;
-}
+
 
 .footerCaption {
   text-align: start;
@@ -158,7 +160,6 @@
   width: 210px;
   height: 50px;
   margin-top: 1%;
-  /* border: 1px solid white; */
 }
 
 @media (max-width: 1000px){
@@ -182,6 +183,9 @@
   .socialLink{
     width: 15%;
   }
+  .signupContainer{
+    height: 50vh;
+  }
   
 }
 
@@ -199,11 +203,12 @@
     margin-top: 1%;
   }
   .heroText{
-    margin-bottom: 2%;
+    margin-top: 4%;
     width: 90%;
   }
   .signupContainer{
-    height: fit-content;
+    height: 50vh;
+    justify-content: space-between;
   }
   .signupContainer:nth-child(1){
     margin-top: 1%;
@@ -235,15 +240,36 @@
   .socialLink{
     width: 25%;
   }
+  .signupContainer{
+   height: 50vh;
+  }
 }
-
-@media (max-width:400px) {
+@media (max-width:500px) {
   .logo{
     margin-top: 4%;
     width: 80px;
     height: 20px;
   }
+  .subHeader{
+    width: 80%;
+  }
+  .heroText{
+    margin-top: 10% !important;
+  }
+  .signupContainer{
+    height: 60vh;
+    justify-content: space-between;
+  }
   .socialLink{
     width: 30%;
+  }
+  .inputField, .selectField, .submitButton{
+    height: 35px;
+  }
+  .submitButton{
+    margin-bottom: 1%;
+  }
+  .footerText{
+    margin-top: 1%;
   }
 }
