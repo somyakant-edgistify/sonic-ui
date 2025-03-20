@@ -8,6 +8,7 @@ import CustomSnackbar from "@/components/Snackbar";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { registerationAPI } from "@/services/api";
 import Image from 'next/image';
+import { Height } from "@mui/icons-material";
 
 
 export default function HomePage() {
@@ -60,13 +61,15 @@ export default function HomePage() {
     <div>
     <Box className={styles.container}>
       {/* Header */}
-      <Image src='/logos/sonic_logo.png' alt="sonic-logo" height={130} width={38} className={styles.logo}/>
+      <div className={styles.imageContainer}>
+      <img src='/logos/sonic_logo.png' alt="sonic-logo" className={styles.logo}/>
+      </div>
       <Typography variant="subtitle1" className={styles.subHeader} sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem', lg:'1.2rem',xl:'1.5rem'}}}>
         Same-day deliveries engineered for fast-growing D2C brands
       </Typography>
 
       {/* Hero Section */}
-      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'2.5rem', sm:'3.5rem',md:'4rem', lg:'4rem',xl:'6rem'}}} >
+      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'2.5rem', sm:'4.5rem',md:'4.5rem', lg:'5rem',xl:'6rem'}}} >
         Join brands that know speed isn’t optional - <span className={styles.heroHighlight}>it’s essential!</span>
       </Typography>
 
@@ -84,18 +87,36 @@ export default function HomePage() {
               <input 
                 placeholder="Name*"
                 name="name" 
+                type="text"
+                onKeyDown={(e) => {
+                  if (!/^[a-zA-Z\s]$/.test(e.key) && e.key !== "Backspace") {
+                    e.preventDefault();
+                  }
+                  if (formDetails.name.length >= 40 && e.key !== "Backspace") {
+                    e.preventDefault(); 
+                  }
+                }}
                 value={formDetails.name} 
                 onChange={handleChange} 
                 className={styles.inputField}   
-                required                         
+                required                      
                  />
               <input 
                 placeholder="Phone*"
-                name="phone" 
+                name="phone"
+                type="number"
                 value={formDetails.phone} 
-                onChange={handleChange} 
+                onChange={handleChange}
                 className={styles.inputField} 
-                required                           
+                required
+                onKeyDown={(e) => {
+                  if (!/^\d$/.test(e.key) && e.key !== "Backspace") {
+                    e.preventDefault(); 
+                  }
+                  if (formDetails.phone.length >= 10 && e.key !== "Backspace") {
+                    e.preventDefault();
+                  }
+                }}                       
                  />
             </Box>
 
@@ -106,7 +127,8 @@ export default function HomePage() {
                 value={formDetails.email} 
                 onChange={handleChange} 
                 className={styles.inputField}  
-                required                          
+                required
+                type="email"                  
                  />
                 <select name="city" value={formDetails.city|| ''} onChange={handleChange}  
                  className={styles.selectField}>
@@ -127,7 +149,8 @@ export default function HomePage() {
                 value={formDetails.company} 
                 onChange={handleChange}
                 className={styles.inputField} 
-                required                           
+                required
+                type="text"                      
                  />
               <Button 
                 type="submit"  
@@ -149,12 +172,12 @@ export default function HomePage() {
         © 2025 OptiSupply Chain Solution Pvt Ltd<br/> <span>All rights reserved.</span>
         </Typography>
         <Box className={styles.socialLink}>
-            <Typography sx={{fontSize:{xs:'0.5rem',sm:'0.6rem',md:'0.8rem',lg:'1rem'}}}>Follow us on</Typography>
+            <Typography sx={{fontSize:{xs:'0.6rem',sm:'0.7rem',md:'0.9rem',lg:'1.1rem'}}}>Follow us on</Typography>
             <Link href="https://www.linkedin.com/company/105163621/admin/dashboard/" target="_blank" rel="noopener noreferrer">
-              <LinkedInIcon sx={{ color: 'white' }} />
+              <LinkedInIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35 }}} />
             </Link>
             <Link href="https://wa.me/8169319152" target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon sx={{ color: 'white' }} />
+              <WhatsAppIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35 }}} />
             </Link>
         </Box>
         </Box>
