@@ -85,12 +85,12 @@ export default function HomePage() {
       <div className={styles.imageContainer}>
       <img src='/logos/sonic_logo.png' alt="sonic-logo" className={styles.logo}/>
       </div>
-      <Typography variant="subtitle1" className={styles.subHeader} sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem', lg:'1.2rem',xl:'1.5rem'}}}>
+      <Typography variant="subtitle1" className={styles.subHeader} sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem', lg:'1.2rem',xl:'1.3rem'}}}>
         Same-day deliveries engineered for fast-growing D2C brands
       </Typography>
 
       {/* Hero Section */}
-      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'2.5rem', sm:'4.5rem',md:'4.5rem', lg:'5rem',xl:'6.5rem'}}} >
+      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'2.5rem', sm:'3.5rem',md:'4.5rem', lg:'4rem',xl:'4.5rem'}}} >
         Join brands that know speed isn’t optional - <span className={styles.heroHighlight}>it’s essential!</span>
       </Typography>
 
@@ -99,8 +99,8 @@ export default function HomePage() {
       {/* Signup Section */}
       <Box className={styles.signupContainer}>
         <Box>
-        <Typography variant="h6" sx={{fontSize:{ xs:'1rem',sm:'1.2rem',md:'1.2rem', lg:'1.4rem' ,xl:'1.5rem', }, fontWeight:400, color:'#C2C2C2', marginTop:'2%'}}>Be first to be fast!</Typography>
-        <Typography variant="body2" sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem' ,lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:700, color:'#C2C2C2'}}>Sign up now and get 50% off on shipping for the first 3 months</Typography>
+        <Typography variant="h6" className={styles.upperLabel} sx={{fontSize:{ xs:'1rem',sm:'1.2rem',md:'1.2rem', lg:'1.4rem' ,xl:'2rem', }, fontWeight:400, color:'#C2C2C2', marginTop:'2%'}}>Be first to be fast!</Typography>
+        <Typography variant="body2" className={styles.upperLabel} sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem' ,lg:'1.2rem' ,xl:'1.5rem' }, fontWeight:700, color:'#C2C2C2'}}>Sign up now and get 50% off on shipping for the first 3 months</Typography>
         </Box>
         {isLoading ? <Loader/>:(!successful ? <Box className={styles.signupBox}>
           <form className={styles.formDet} sx={{width :'100%'}} onSubmit={handleFormSubmit}>
@@ -203,7 +203,7 @@ export default function HomePage() {
         </Box>
         )}
 
-        <Typography variant="body2" className={styles.footerText} sx={{fontSize:{xs:'1.2rem',sm:'1rem', md:'1.5rem', lg:'1.8rem' , xl:'2.5rem'}}}>
+        <Typography variant="body2" className={styles.footerText} sx={{fontSize:{xs:'1.2rem',sm:'1rem', md:'1.5rem', lg:'1.5rem' , xl:'1.8rem'}}}>
           From cart to doorstep <span style={{ color: "#E6FF00" }}>in hours</span>
         </Typography>
         <Box className={styles.foot}>
@@ -213,10 +213,10 @@ export default function HomePage() {
         <Box className={styles.socialLink}>
             <Typography sx={{fontSize:{xs:'0.6rem',sm:'0.7rem',md:'0.9rem',lg:'1.1rem'}}}>Follow us on</Typography>
             <Link href="https://www.linkedin.com/company/105163621/admin/dashboard/" target="_blank" rel="noopener noreferrer">
-              <LinkedInIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35 ,lg: 40, xl: 65 }}} />
+              <LinkedInIcon className={styles.socialMedia} sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 30 ,lg: 35, xl: 40 }}} />
             </Link>
             <Link href={WA_LINK} target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35,lg: 40, xl: 65 }}} />
+              <WhatsAppIcon className={styles.socialMedia} sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 30,lg: 35, xl: 40 }}} />
             </Link>
         </Box>
         </Box>
