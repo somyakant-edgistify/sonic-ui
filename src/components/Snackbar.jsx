@@ -8,7 +8,7 @@ const CustomSnackbar = ({ color,open, handleClose, message, success }) => {
   return (
     <Snackbar
       open={open}
-      autoHideDuration={3000} 
+      autoHideDuration={4000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "top", horizontal: "right" }} 
     >

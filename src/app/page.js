@@ -7,9 +7,6 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import CustomSnackbar from "@/components/Snackbar";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { registerationAPI } from "@/services/api";
-import Image from 'next/image';
-import { Height } from "@mui/icons-material";
-
 
 export default function HomePage() {
   const [formDetails, setFormDetails] = useState({ name: '', phone: '', email: '', city: '', company: '' });
@@ -17,7 +14,8 @@ export default function HomePage() {
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [colorSet , setColorSet] = useState('');
   const [severity, setSeverity] = useState('');
-  
+  const [successful , setSuccessful] = useState(false);
+
   const checkMandatory = useMemo(() => {
     return !formDetails.name || !formDetails.email || !formDetails.phone || !formDetails.company;
   }, [formDetails]);
@@ -31,31 +29,49 @@ export default function HomePage() {
 
   const handleFormSubmit = async(e) => {
     e.preventDefault();
-    let params = 
+    const num = String(formDetails.phone);
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+      if(num.length < 10){
+         setColorSet('red');
+         setSnackbarMessage('Enter Valid Number!');
+         setSeverity('error');
+         setSuccessSnakbar(true);
+      }
+      else if(!emailRegex.test(formDetails.email)){
+        setColorSet('red');
+        setSnackbarMessage('Enter Valid Email Id!');
+        setSeverity('error');
+        setSuccessSnakbar(true)
+      }
+
+    else if(num.length === 10 && emailRegex.test(formDetails.email)) {
+      let params = 
       {
         "name": formDetails.name ,
         "email": formDetails.email,
-        "mobileNumber": formDetails.phone,
+        "mobileNumber": Number(formDetails.phone),
         "organization": formDetails.company,
         "city":formDetails.city,
       }
-    const res =  await registerationAPI(params);
 
-    if(res.success){
-      setColorSet('green');
-      setSnackbarMessage(res.message);
-      setSeverity('success');
-      setSuccessSnakbar(true);
-    }
-    else{
-      setColorSet('red');
-      setSnackbarMessage('Invalid Credentials!');
-      setSeverity('error');
-      setSuccessSnakbar(true);
-    }
+      const res =  await registerationAPI(params);
   
+      if(res.success){
+        setTimeout(()=>{
+          setSuccessful(true);
+        },2000);
+      }
+      else{
+        setColorSet('red');
+        setSnackbarMessage('Something went wrong!');
+        setSeverity('error');
+        setSuccessSnakbar(true);
+      }
+    }
     setFormDetails({ name: '', phone: '', email: '', city: '', company: '' })
   };
+
 
   return (
     <div>
@@ -81,7 +97,7 @@ export default function HomePage() {
         <Typography variant="h6" sx={{fontSize:{ xs:'0.8rem',sm:'0.8rem',md:'1rem', lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:400, color:'#C2C2C2', marginTop:'2%'}}>Be first to be fast!</Typography>
         <Typography variant="body2" sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem' ,lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:700, color:'#C2C2C2'}}>Sign up now and get 50% off on shipping for the first 3 months</Typography>
         </Box>
-        <Box className={styles.signupBox}>
+        {!successful ? <Box className={styles.signupBox}>
           <form style={{ width: "100%" }} onSubmit={handleFormSubmit}>
             <Box className={styles.formContainer}>
               <input 
@@ -92,7 +108,7 @@ export default function HomePage() {
                   if (!/^[a-zA-Z\s]$/.test(e.key) && e.key !== "Backspace") {
                     e.preventDefault();
                   }
-                  if (formDetails.name.length >= 40 && e.key !== "Backspace") {
+                  if (formDetails.name.length >= 50 && e.key !== "Backspace") {
                     e.preventDefault(); 
                   }
                 }}
@@ -121,15 +137,20 @@ export default function HomePage() {
             </Box>
 
             <Box className={styles.formContainer}>
-            <input 
+              <input 
                 placeholder="Email*"
                 name="email" 
                 value={formDetails.email} 
                 onChange={handleChange} 
                 className={styles.inputField}  
                 required
-                type="email"                  
-                 />
+                type="text"  
+                onKeyDown={(e) => {
+                  if (formDetails.email.length >= 50 && e.key !== "Backspace") {
+                    e.preventDefault();
+                  }
+                }}         
+              />
                 <select name="city" value={formDetails.city|| ''} onChange={handleChange}  
                  className={styles.selectField}>
                   <option value="" disabled hidden>
@@ -150,7 +171,12 @@ export default function HomePage() {
                 onChange={handleChange}
                 className={styles.inputField} 
                 required
-                type="text"                      
+                type="text"
+                onKeyDown={(e) => {
+                  if (formDetails.company.length >= 50 && e.key !== "Backspace") {
+                    e.preventDefault(); 
+                  }
+                }}
                  />
               <Button 
                 type="submit"  
@@ -163,6 +189,13 @@ export default function HomePage() {
             </Box>
           </form>
         </Box>
+          :
+        <Box className={styles.successText}>
+          <Typography sx={{fontSize:{sx:'1.2rem', sm:'1.8rem', md:'2.5rem', lg:'2.5rem', xl:'3rem'}}}>
+            Thanks for showing interest in Sonic. <br/> We will get back to you within 24 hours.
+          </Typography>
+        </Box>
+        }
 
         <Typography variant="body2" className={styles.footerText} sx={{fontSize:{xs:'1.2rem',sm:'1rem', md:'1.5rem'}}}>
           From cart to doorstep <span style={{ color: "#E6FF00" }}>in hours</span>
