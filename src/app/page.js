@@ -7,6 +7,8 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import CustomSnackbar from "@/components/Snackbar";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { registerationAPI } from "@/services/api";
+import { Loader } from "@/components/Loader/Loader";
+
 
 export default function HomePage() {
   const [formDetails, setFormDetails] = useState({ name: '', phone: '', email: '', city: '', company: '' });
@@ -15,6 +17,8 @@ export default function HomePage() {
   const [colorSet , setColorSet] = useState('');
   const [severity, setSeverity] = useState('');
   const [successful , setSuccessful] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
+  const WA_LINK = process.env.NEXT_PUBLIC_WHATSAPP_LINK;
 
   const checkMandatory = useMemo(() => {
     return !formDetails.name || !formDetails.email || !formDetails.phone || !formDetails.company;
@@ -54,16 +58,17 @@ export default function HomePage() {
         "organization": formDetails.company,
         "city":formDetails.city,
       }
-
+      setIsLoading(true);
       const res =  await registerationAPI(params);
   
       if(res.success){
         setTimeout(()=>{
+          setIsLoading(false);
           setSuccessful(true);
         },2000);
       }
       else{
-        setColorSet('red');
+        setColorSet('#640A02');
         setSnackbarMessage('Something went wrong!');
         setSeverity('error');
         setSuccessSnakbar(true);
@@ -85,7 +90,7 @@ export default function HomePage() {
       </Typography>
 
       {/* Hero Section */}
-      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'2.5rem', sm:'4.5rem',md:'4.5rem', lg:'5rem',xl:'6rem'}}} >
+      <Typography variant="h3" className={styles.heroText} sx={{fontSize:{xs:'2.5rem', sm:'4.5rem',md:'4.5rem', lg:'5rem',xl:'6.5rem'}}} >
         Join brands that know speed isn’t optional - <span className={styles.heroHighlight}>it’s essential!</span>
       </Typography>
 
@@ -94,11 +99,11 @@ export default function HomePage() {
       {/* Signup Section */}
       <Box className={styles.signupContainer}>
         <Box>
-        <Typography variant="h6" sx={{fontSize:{ xs:'0.8rem',sm:'0.8rem',md:'1rem', lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:400, color:'#C2C2C2', marginTop:'2%'}}>Be first to be fast!</Typography>
+        <Typography variant="h6" sx={{fontSize:{ xs:'1rem',sm:'1.2rem',md:'1.2rem', lg:'1.4rem' ,xl:'1.5rem', }, fontWeight:400, color:'#C2C2C2', marginTop:'2%'}}>Be first to be fast!</Typography>
         <Typography variant="body2" sx={{fontSize:{xs:'0.6rem',sm:'0.8rem',md:'1rem' ,lg:'1.2rem' ,xl:'1.5rem', }, fontWeight:700, color:'#C2C2C2'}}>Sign up now and get 50% off on shipping for the first 3 months</Typography>
         </Box>
-        {!successful ? <Box className={styles.signupBox}>
-          <form style={{ width: "100%" }} onSubmit={handleFormSubmit}>
+        {isLoading ? <Loader/>:(!successful ? <Box className={styles.signupBox}>
+          <form className={styles.formDet} sx={{width :'100%'}} onSubmit={handleFormSubmit}>
             <Box className={styles.formContainer}>
               <input 
                 placeholder="Name*"
@@ -183,6 +188,7 @@ export default function HomePage() {
                 disabled={checkMandatory}  
                 className={`${styles.submitButton} ${checkMandatory ? styles.submitButtonDisabled : styles.submitButtonEnabled}`}
                 endIcon={<ArrowForwardIcon />}
+                sx={{fontSize :{xl:'1.2rem'}}}
               >
                 Go Sonic!
               </Button>
@@ -191,13 +197,13 @@ export default function HomePage() {
         </Box>
           :
         <Box className={styles.successText}>
-          <Typography sx={{fontSize:{sx:'1.2rem', sm:'1.8rem', md:'2.5rem', lg:'2.5rem', xl:'3rem'}}}>
+          <Typography sx={{fontSize:{sx:'1.2rem', sm:'1.8rem', md:'2.2rem', lg:'2.2rem', xl:'2.5rem'}}}>
             Thanks for showing interest in Sonic. <br/> We will get back to you within 24 hours.
           </Typography>
         </Box>
-        }
+        )}
 
-        <Typography variant="body2" className={styles.footerText} sx={{fontSize:{xs:'1.2rem',sm:'1rem', md:'1.5rem'}}}>
+        <Typography variant="body2" className={styles.footerText} sx={{fontSize:{xs:'1.2rem',sm:'1rem', md:'1.5rem', lg:'1.8rem' , xl:'2.5rem'}}}>
           From cart to doorstep <span style={{ color: "#E6FF00" }}>in hours</span>
         </Typography>
         <Box className={styles.foot}>
@@ -207,10 +213,10 @@ export default function HomePage() {
         <Box className={styles.socialLink}>
             <Typography sx={{fontSize:{xs:'0.6rem',sm:'0.7rem',md:'0.9rem',lg:'1.1rem'}}}>Follow us on</Typography>
             <Link href="https://www.linkedin.com/company/105163621/admin/dashboard/" target="_blank" rel="noopener noreferrer">
-              <LinkedInIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35 }}} />
+              <LinkedInIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35 ,lg: 40, xl: 65 }}} />
             </Link>
-            <Link href="https://wa.me/8169319152" target="_blank" rel="noopener noreferrer">
-              <WhatsAppIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35 }}} />
+            <Link href={WA_LINK} target="_blank" rel="noopener noreferrer">
+              <WhatsAppIcon sx={{ color: 'white' ,fontSize: { xs: 24, sm: 32, md: 35,lg: 40, xl: 65 }}} />
             </Link>
         </Box>
         </Box>
