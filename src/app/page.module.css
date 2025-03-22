@@ -8,11 +8,10 @@
   justify-content: center;
   align-items: center;
   height: 100dvh;  
-  width: 100vw;
+  /* width: 100vw; */
   box-sizing: border-box;
 }
 .imageContainer {
-  position: relative;
   width: 350px; 
   height: 90px;
 }
@@ -20,7 +19,6 @@
   height: 100% !important;
   width: 100% !important;
   object-fit: cover;
-  
 }
 
 .subHeader {
@@ -44,7 +42,6 @@
   color: #fff;
 }
 
-/* Signup Section */
 .signupContainer {
   background-color: #121212;
   border-radius: 40px 40px 0 0;
@@ -54,21 +51,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
   font-family: 'Inter';
 }
+.labelContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self:center;
+  text-align: center;
+}
 
 .signupBox {
-  /* border: 1px solid white; */
   width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1% ;
 }
 .formDet{
-  /* border: 1px solid red; */
   width: 80%;
 }
 .formContainer {
@@ -97,7 +98,6 @@
 }
 
 .selectField {
-  /* border: 1px solid white !important; */
   background-color: #d9d9d9 !important;
   border-radius: 15px !important;
   width: 100% !important;
@@ -108,7 +108,6 @@
 }
 
 .submitButton {
-  /* border: 1px solid white !important; */
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -137,13 +136,11 @@
 }
 
 .successText{
-  /* border: 1px solid red; */
   color:#D1F801;
 }
 
 .footerCaption {
   text-align: start;
-  margin-top: 2rem;
   opacity: 0.6;
 }
 
@@ -156,12 +153,13 @@
 
 .socialLink{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
   width: 15%;
   font-family: 'Inter';
   font-weight: 400;
   color:#FFFFFF4A;
+  gap: 2%;
 }
 
 .logo{
@@ -169,27 +167,279 @@
   height: 50px;
   margin-top: 1%;
 }
+.followUs{
+  font-size: 1rem !important;
+}
 
-@media (min-width:1550px) {
+@media (max-width:5120px) {
+  .imageContainer{
+    width: 30%;
+    height: 10%;
+  }
+  .subHeader{
+    font-size: 5rem !important;
+  }
+  .heroText{
+    font-size: 14rem !important;
+  }
+  .upperLabel{
+    font-size: 5rem !important;
+  }
+  .lowerLabel{
+    font-size: 4.5rem !important;
+   }
+   .signupBox{
+    height: 55%;
+    width: 70%;
+   }
+   .formContainer{
+    width: 80% !important;
+    height: 30%;
+   }
+   .formDet{
+     justify-content: space-between;
+     height: 80%;
+   }
+   .inputField, .selectField, .submitButton{
+    border-radius: 80px !important;
+     font-size: 4.5rem !important;
+     padding-left: 2.5% !important;
+     height: 85% !important;
+   }
+   .footerText{
+    font-size: 5.5rem !important;
+   }
+   .foot{
+    height: 10%;
+   }
+   .footerCaption{
+    font-size: 2.2rem !important;
+  }
+  .followUs{
+    font-size: 2.2rem !important;    
+  }
+  .socialMedia{
+    font-size: 6rem !important;
+  } 
+}
+@media (max-width:4096px) {
+  .imageContainer{
+    width: 30%;
+    height: 10%;
+  }
+  .subHeader{
+    font-size: 5rem !important;
+  }
+  .heroText{
+    font-size: 14rem !important;
+  }
+  .upperLabel{
+    font-size: 5rem !important;
+  }
+  .lowerLabel{
+    font-size: 4.5rem !important;
+   }
+   .signupBox{
+    height: 55%;
+    width: 70%;
+   }
+   .formContainer{
+    width: 80% !important;
+    height: 30%;
+   }
+   .formDet{
+     justify-content: space-between;
+     height: 80%;
+   }
+   .inputField, .selectField, .submitButton{
+    border-radius: 80px !important;
+     font-size: 4.5rem !important;
+     padding-left: 2.5% !important;
+     height: 85% !important;
+   }
+   .footerText{
+    font-size: 5.5rem !important;
+   }
+   .foot{
+    height: 10%;
+   }
+   .footerCaption{
+    font-size: 2.2rem !important;
+  }
+  .followUs{
+    font-size: 2.2rem !important;    
+  }
+  .socialMedia{
+    font-size: 6rem !important;
+  } 
+}
+@media (max-width:3840px){
+  .imageContainer{
+   margin-top: 1%;
+   width: 850px;
+   height: 150px;
+  } 
+  .subHeader{
+    font-size: 3rem !important;
+  }
+  .heroText{
+   font-size: 11rem !important;
+  }
+  .signupBox{
+   height: 60%;
+   width: 75%;
+  }
+  .formContainer{
+   width: 80% !important;
+   height: 30%;
+  }
+  .formDet{
+    justify-content: space-between;
+    height: 80%;
+  }
+  .upperLabel{
+   font-size: 4.5rem !important;
+  }
+  .lowerLabel{
+   font-size: 4rem !important;
+  }
+  .inputField, .selectField, .submitButton{
+   border-radius: 90px !important;
+    font-size: 4.5rem !important;
+    padding-left: 2.5% !important;
+    height: 90% !important;
+  }
+  .socialLink{
+   justify-content: center;
+   gap: 1%;
+  }
+  .footerCaption{
+   font-size: 2.2rem !important;
+  }
+  .socialMedia{
+   font-size: 6rem !important;
+  }
+ 
+  .socialLink{
+   justify-content: flex-end;
+  }
+  .followUs{
+   font-size: 2.2rem !important;
+  }
+  .footerText{
+   /* margin-top: 1% !important; */
+   font-size: 5rem !important;
+  }
+}
+ @media (max-width:2560px){
+ 
+  .formContainer{
+   width: 90% !important;
+   height: 30%;
+  }
+  .formDet{
+    justify-content: space-between;
+  }
+  .inputField, .selectField, .submitButton{
+   height: 100%;
+   border-radius: 40px !important;
+   font-size: 2.8rem !important;
+   padding-left: 1.5% !important;
+  }
+  .heroText{
+   font-size: 9rem !important;
+  }
+  .imageContainer{
+   width: 700px;
+   margin: 1.5% !important;
+ }
+ .subHeader{
+   font-size: 2rem !important;
+ }
+  .upperLabel{
+   font-size: 3rem !important;
+  }
+  .lowerLabel{
+    font-size: 2rem !important;
+  }
+  .footerText{
+   margin-top: 0px !important;
+   font-size: 4rem !important;
+  }
+  .footerCaption{
+   font-size: 1.5rem !important;
+ }
+ .socialLink{
+    width: 15% !important;
+  }
+  .socialMedia{
+   font-size: 4rem !important;
+  }
+  .followUs{
+   font-size: 2.5rem !important;
+  }
+  .successText>p{
+    font-size: 7.5rem;
+  }
+}
+@media (max-width:1920px){
+  .imageContainer{
+    width: 400px;
+    height: 100px;
+    margin-top: 0.5% !important;
+  }
+  .subHeader{
+   font-size: 2rem !important;
+  }
+  .heroText{
+   font-size: 6rem !important;
+  }
+  .upperLabel{
+    font-size: 2.5rem !important;
+  }
+  .lowerLabel{
+    font-size: 1.8rem !important;
+  }
+  .footerText{
+    font-size: 3rem !important;
+  }
+  .footerCaption{
+    font-size: 1.2rem !important;
+  }
+  .socialLink{
+    height: 100%;
+    width: 25% !important;
+  }
+  .followUs{
+    font-size: 1.2rem !important;
+  }
+  .socialMedia{
+    font-size: 2.2rem !important;
+  }
+  .inputField, .selectField, .submitButton{
+    font-size: 2rem !important;
+  }
+ }
+ @media (max-width:1680px){
   
   .imageContainer{
     position: relative;
     width: 300px;
-    height: 120px;
+    height: 80px;
   }
-  .logo{
-    height: 100% !important;
-    width: 100% !important;
-    object-fit: cover;
+  .subHeader{
+    font-size: 1.2rem !important;
+  }
+  .upperLabel{
+    font-size: 2rem !important;
+  }
+  .lowerLabel{
+    font-size: 1.5rem !important;
   }
   .foot{
     margin-bottom: 5px !important;
     height: 12%;
    }
-  .socialLink{
-    width: 15% !important;
-  }
- 
    .footerText{
     margin-top: 0.5% !important;
     letter-spacing: 5px !important;
@@ -200,6 +450,81 @@
    }
    .heroText{
     width: 90%;
+    font-size: 4.5rem !important;
+    margin-top: 2% !important;
+   }
+   .signupBox{
+    height: 50vh;
+   }
+   .formDet{
+      height: 85%;
+      width: 85%;
+   }
+   .formContainer{
+    height: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px !important;
+   }
+   .inputField, .selectField, .submitButton{
+    height: 100% !important ;
+    border-radius: 25px ;
+    font-size: 1.5rem !important;
+    padding-left: 1.5rem !important;
+   }
+   .formDet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .formContainer{
+    justify-content: center;
+   }
+  .footerText{
+    font-size: 2.5rem !important;
+  }
+  .footerCaption, .followUs{
+    font-size: 0.8rem !important;
+  }
+  .socialMedia{
+    font-size: 2rem !important;
+  }
+}
+@media (max-width:1440px){
+  
+  .imageContainer{
+    width: 250px;
+    height: 70px;
+  }
+  .subHeader{
+    font-size: 1.2rem !important;
+  }
+  .upperLabel{
+    font-size: 1rem !important;
+  }
+  .lowerLabel{
+    font-size: 0.8rem !important;
+  }
+  .foot{
+    width: 95;
+    margin-bottom: 5px !important;
+    height: 12%;
+   }
+   .footerText{
+    margin-top: 0.5% !important;
+    letter-spacing: 5px !important;
+   }
+   .socialLink{
+    width: 20%;
+    height: 100%;
+    margin-right: 1%;
+   }
+   .heroText{
+    width: 90%;
+    font-size: 3.5rem !important;
+    margin-top: 1% !important;
    }
    .signupBox{
     height: 50vh;
@@ -207,262 +532,235 @@
    .formDet{
       height: 80%;
       width: 85%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
+   }
+   .formContainer{
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px !important;
+   }
+   .inputField, .selectField, .submitButton{
+    height: 100% !important ;
+    border-radius: 25px ;
+    font-size: 1.2rem !important;
+    padding-left: 1.2rem !important;
+   }
+   .formDet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .formContainer{
+    justify-content: center;
+   }
+  .footerText{
+    font-size: 1.2rem !important;
+  }
+  .footerCaption, .followUs{
+    font-size: 0.6rem !important;
+  }
+  .socialMedia{
+    font-size: 1.5rem !important;
+  }
+}
+@media (max-width:1024px){
+  
+  .imageContainer{
+    width: 280px;
+  }
+  .subHeader{
+    font-size: 1.2rem !important;
+  }
+  .upperLabel{
+    font-size: 1.8rem !important;
+  }
+  .lowerLabel{
+    font-size: 1.2rem !important;
+  }
+  .foot{
+    margin-bottom: 5px !important;
+    height: 12%;
+   }
+   .footerText{
+    font-size: 1.5rem !important;    
+   }
+   .socialLink{
+    width: 20%;
+    height: 100%;
+   }
+   .heroText{
+    width: 90%;
+    font-size: 4.5rem !important;
+    margin-top: 2% !important;
+   }
+   .signupBox{
+    height: 50vh;
+   }
+   .formDet{
+      height: 85%;
+      width: 85%;
    }
    .formContainer{
     height: 25%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px !important;
+    gap: 20px !important;
    }
    .inputField, .selectField, .submitButton{
-    height: 45px ;
+    height: 100% !important ;
     border-radius: 25px ;
-    font-size: large !important;
+    font-size: 1.2rem !important;
+    padding-left: 1.5rem !important;
    }
-  
-
-}
-
-@media (min-width:1800px) {
-  
-  .formDet{
-    height: 90%;
-  }
-  .inputField, .selectField, .submitButton{
-    height: 60px;
-    border-radius: 20px !important;
-  }
-  .socialLink{
-    width: 12% !important;
-  }
-}
-
-@media (min-width:2200px){
-   /* .formDet{
-    border: 1px solid red;
-   } */
+   .formDet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
    .formContainer{
-    /* border: 1px solid white; */
-    width: 90% !important;
+    justify-content: center;
    }
-   .inputField, .selectField, .submitButton{
-    height: 90%;
-    font-size: 2.8rem !important;
-   }
-   .heroText{
-    font-size: 10rem !important;
-   }
-   .imageContainer{
-    /* border: 1px solid white; */
-    width: 750px;
-  }
-  .subHeader{
-    font-size: 3rem !important;
-  }
-  /* .logo{
-    border:1px solid red
-  } */
-   .upperLabel{
-    font-size: 3rem !important;
-   }
-   .footerText{
-    margin-top: 0px !important;
-    font-size: 4rem !important;
-   }
-   .footerCaption{
-    font-size: 1.8rem !important;
-  }
-  .socialLink{
-    /* border: 1px solid red; */
-     width: 12% !important;
-   }
-
-   .socialMedia{
-    font-size: 4.5rem !important;
-   }
-   .socialLink>p{
-    font-size: 2.2rem !important;
-   }
-}
-
-@media (min-width:2450px){
-  /* .formDet{
-   border: 1px solid red;
-  } */
-  .formContainer{
-   /* border: 1px solid white; */
-   width: 90% !important;
-  }
-  .inputField, .selectField, .submitButton{
-   height: 85%;
-   border-radius: 45px !important;
-   font-size: 2.8rem !important;
-   padding-left: 1.2% !important;
-  }
-  .heroText{
-   font-size: 14rem !important;
-  }
-  .imageContainer{
-   /* border: 1px solid white; */
-   width: 850px;
-   margin: 1.5% !important;
- }
- .subHeader{
-   font-size: 3rem !important;
- }
- /* .logo{
-   border:1px solid red
- } */
-  .upperLabel{
-   font-size: 4rem !important;
-  }
-  .footerText{
-   margin-top: 0px !important;
-   font-size: 4.5rem !important;
-  }
   .footerCaption{
-   font-size: 2.2rem !important;
- }
- .socialLink{
-    width: 11% !important;
+    font-size: 0.5rem !important;
   }
   .socialMedia{
-   font-size: 6rem !important;
-  }
-  .socialLink>p{
-   font-size: 2.5rem !important;
+    font-size: 2rem !important;
   }
 }
-
-@media (max-width: 1000px){
-
-  .logo{
-    width: 400px;
-    height: 800px;
-    margin-top: 1%;
-  }
-  .subHeader {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    width: 60%;
-  }
-  .heroText{
-     margin-top: 10px !important;
-  }
-  .signupContainer{
-    height: fit-content;
-  }
-  .socialLink{
-    width: 20%;
-  }
-  .signupContainer{
-    height: 50vh;
-  }
+@media (max-width:768px){
   
-}
-
-@media (max-width: 769px){
-  .logo{
-    width: 130px;
-    height: 40px;
-    margin-top: 1%;
-  }
-  .subHeader{
-    width: 60%;
-  }
-  .signupBox{
-    width:70%;
-    margin-top: 1%;
-  }
-  .heroText{
-    margin-top: 10% !important;
-    width: 90%;
-  }
-  .signupContainer{
-    height: 50vh;
-    justify-content: space-between;
-  }
-  .signupContainer:nth-child(1){
-    margin-top: 1%;
-  }
-  .formContainer{
-    padding: 10px 10px 0 10px;
-    gap: 10px;
-  }
-  .inputField{
-    width: 60%;
-    height:35px;
-  }
-  .selectField{
-    height: 35px;
-  }
-  .socialLink{
-    width:22%;
-  }
-  .submitButton{
-    height: 35px;
-  }
-}
-
-@media (max-width: 600px){
-  .logo{
-    width:100px;
-    height: 30px;
-  }
-  .socialLink{
-    width: 25%;
-  }
-  .signupContainer{
-   height: 50vh;
-  }
-  .heroText{
-    margin-top: 13% !important;
-  }
-}
-
-@media (max-width:500px) {
-  .logo{
-    margin-top: 1%;
-    width: 80px;
-    height: 20px;
-  }
-  .subHeader{
-    width: 80%;
-  }
-  .heroText{
-    margin-top: 1% !important;
-  }
-  .signupContainer{
-    height: 55vh;
-    justify-content: space-between;
-  }
-  .socialLink{
-    width: 30%;
-  }
-  .signupBox{
-    width: 80%;
-  }
-  .formDet{
-    width: 99%;
-  }
-  .inputField, .selectField, .submitButton{
-    height: 35px;
-    border-radius: 10px !important;
-    font-size:small;
-    color: #000;
-  }
-  .submitButton{
-    margin-bottom: 1%;
-  }
-  .footerText{
-    margin-top: 1%;
-  }
   .imageContainer{
-    width: 200px;
+    width: 280px;
   }
-} 
+  .subHeader{
+    font-size: 1.2rem !important;
+  }
+  .upperLabel{
+    font-size: 1.8rem !important;
+  }
+  .lowerLabel{
+    font-size: 1.2rem !important;
+  }
+  .foot{
+    margin-bottom: 5px !important;
+    height: 12%;
+   }
+   .footerText{
+    font-size: 1.5rem !important;    
+   }
+   .socialLink{
+    width: 20%;
+    height: 100%;
+   }
+   .heroText{
+    width: 90%;
+    font-size: 2.5rem !important;
+    margin-top: 2% !important;
+   }
+   .signupBox{
+    height: 50vh;
+   }
+   .formDet{
+      height: 85%;
+      width: 97%;
+   }
+   .formContainer{
+    height: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px !important;
+   }
+   .inputField, .selectField, .submitButton{
+    height: 100% !important ;
+    border-radius: 25px ;
+    font-size: 1.2rem !important;
+    padding-left: 1.5rem !important;
+   }
+   .formDet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .formContainer{
+    justify-content: center;
+   }
+  .footerCaption{
+    font-size: 0.5rem !important;
+  }
+  .socialMedia{
+    font-size: 2rem !important;
+  }
+}
+@media (max-width:480px){
+  
+  .imageContainer{
+    width: 280px;
+  }
+  .subHeader{
+    font-size: 0.6rem !important;
+  }
+  .upperLabel{
+    font-size: 1rem !important;
+  }
+  .lowerLabel{
+    width: 80% !important;
+    font-size: 0.8rem !important;
+  }
+  .foot{
+    margin-bottom: 5px !important;
+    height: 12%;
+   }
+   .footerText{
+    font-size: 1rem !important; 
+    letter-spacing: normal !important;   
+   }
+   .socialLink{
+    width: 35%;
+    height: 100%;
+   }
+   .heroText{
+    width: 90%;
+    font-size: 2.5rem !important;
+    margin-top: 2% !important;
+   }
+   .formDet{
+      height: 85%;
+      width: 97%;
+   }
+   .formContainer{
+    height: 33%;
+    display: flex;
+    flex-direction: column;
+    gap: 13% !important;
+   }
+   .inputField, .selectField, .submitButton{
+    height: 45% !important ;
+    border-radius: 25px ;
+    font-size: 1.2rem !important;
+    padding-left: 1.5rem !important;
+   }
+   .formDet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .formContainer{
+    justify-content: center;
+   }
+  .footerCaption{
+    font-size: 0.4rem !important;
+  }
+  .socialLink{
+    width: 35% !important;
+  }
+  .socialMedia{
+    font-size: 1.5rem !important;
+  }
+}
