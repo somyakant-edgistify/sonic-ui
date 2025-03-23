@@ -116,12 +116,7 @@ export default function HomePage() {
                 name="name" 
                 type="text"
                 onInput={(e) => {
-                  if (!/^[a-zA-Z\s]$/.test(e.key) && e.key !== "Backspace") {
-                    e.preventDefault();
-                  }
-                  if (formDetails.name.length >= 50 && e.key !== "Backspace") {
-                    e.preventDefault(); 
-                  }
+                  e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, "").slice(0, 50);
                 }}
                 value={formDetails.name} 
                 onChange={handleChange} 
@@ -137,13 +132,8 @@ export default function HomePage() {
                 onChange={handleChange}
                 onBlur={validatePhoneNumber}
                 onInput={(e) => {
-                  if (!/^\d$/.test(e.key) && e.key !== "Backspace") {
-                    e.preventDefault(); 
-                  }
-                  if (formDetails.phone.length >= 10 && e.key !== "Backspace") {
-                    e.preventDefault();
-                  }
-                }} 
+                  e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                }}
                 required                      
                  />
             </Box>
@@ -159,10 +149,8 @@ export default function HomePage() {
                 required
                 type="text"  
                 onInput={(e) => {
-                  if (formDetails.email.length >= 50 && e.key !== "Backspace") {
-                    e.preventDefault();
-                  }
-                }}         
+                  e.target.value = e.target.value.slice(0, 50);
+                }}       
               />
                 <select name="city" value={formDetails.city|| ''} onChange={handleChange}  
                  className={styles.selectField}>
@@ -186,9 +174,7 @@ export default function HomePage() {
                 required
                 type="text"
                 onInput={(e) => {
-                  if (formDetails.company.length >= 50 && e.key !== "Backspace") {
-                    e.preventDefault(); 
-                  }
+                  e.target.value = e.target.value.slice(0, 50);
                 }}
                  />
               <Button 
