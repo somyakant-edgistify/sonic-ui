@@ -115,7 +115,7 @@ export default function HomePage() {
                 placeholder="Name*"
                 name="name" 
                 type="text"
-                onKeyDown={(e) => {
+                onInput={(e) => {
                   if (!/^[a-zA-Z\s]$/.test(e.key) && e.key !== "Backspace") {
                     e.preventDefault();
                   }
@@ -136,7 +136,7 @@ export default function HomePage() {
                 value={formDetails.phone} 
                 onChange={handleChange}
                 onBlur={validatePhoneNumber}
-                onKeyDown={(e) => {
+                onInput={(e) => {
                   if (!/^\d$/.test(e.key) && e.key !== "Backspace") {
                     e.preventDefault(); 
                   }
@@ -158,7 +158,7 @@ export default function HomePage() {
                 className={styles.inputField}  
                 required
                 type="text"  
-                onKeyDown={(e) => {
+                onInput={(e) => {
                   if (formDetails.email.length >= 50 && e.key !== "Backspace") {
                     e.preventDefault();
                   }
@@ -185,7 +185,7 @@ export default function HomePage() {
                 className={styles.inputField} 
                 required
                 type="text"
-                onKeyDown={(e) => {
+                onInput={(e) => {
                   if (formDetails.company.length >= 50 && e.key !== "Backspace") {
                     e.preventDefault(); 
                   }
