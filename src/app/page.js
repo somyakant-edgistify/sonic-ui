@@ -229,12 +229,7 @@ export default function HomePage() {
         </Box>
       </Box>
     </Box>
-    <ToastContainer
-    position="top-center"
-    style={{
-       zIndex: 9999, 
-       position: "fixed"
-     }} />
+    <ToastContainer position="bottom-center"/>
     </div>
   );
 }

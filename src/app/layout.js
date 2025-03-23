@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Sonic",
   description: "From cart to doorstep in hours",
-  favicon:'/favicon.png'
+  favicon:'/favicon.ico'
 };
 
 export default function RootLayout({ children }) {
