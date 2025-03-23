@@ -4,23 +4,21 @@ import { Box, Typography, Button, Link } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import CustomSnackbar from "@/components/Snackbar";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { registerationAPI } from "@/services/api";
 import { Loader } from "@/components/Loader/Loader";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 export default function HomePage() {
   const [formDetails, setFormDetails] = useState({ name: '', phone: '', email: '', city: '', company: '' });
-  const [successSnackbar, setSuccessSnakbar] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
-  const [colorSet , setColorSet] = useState('');
-  const [severity, setSeverity] = useState('');
   const [successful , setSuccessful] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+
   const WA_LINK = process.env.NEXT_PUBLIC_WHATSAPP_LINK;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const phoneRegex = /^[6789]\d{9}$/;
 
   const checkMandatory = useMemo(() => {
     return !formDetails.name || !formDetails.email || !formDetails.phone || !formDetails.company;
@@ -28,60 +26,59 @@ export default function HomePage() {
 
   const handleChange = (e) => {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
-
-    if (e.target.name === "email" && !emailRegex.test(e.target.value) && e.target.value !== "") {
-      setColorSet("#D32F2F");
-      setSnackbarMessage("Invalid email format");
-      setSeverity("error");
-      setSuccessSnakbar(true);
-    } else if (e.target.name === "phone" && (!/^\d{10}$/.test(e.target.value) && e.target.value !== "")) {
-      e.target.value.replace(/\D/g, "");
-      setColorSet("#D32F2F");
-      setSnackbarMessage("Phone number must be 10 digits");
-      setSeverity("error");
-      setSuccessSnakbar(true);
-    } else {
-      setSuccessSnakbar(false);
-    }
   };
-  const handleCloseSnackbar = useCallback(() => {
-    setSuccessSnakbar(false);
-  },[]);
- 
+  const showError = (message) => {
+    toast.error(message, {autoClose: 2000 , style:{backgroundColor:'#d9d9d9', color:'#000'}});
+  };
+  const validateEmail = () => {
+    if (!emailRegex.test(formDetails.email)) {
+      showError("Invalid email format");
+      return false;
+    }
+    return true;
+  };
+  
+  const validatePhoneNumber = () => {
+    if (!phoneRegex.test(formDetails.phone)) {
+      showError("Invalid phone number");
+      return false;
+    }
+    return true;
+  };
+
 
   const handleFormSubmit = async(e) => {
-    e.preventDefault();
-    const num = String(formDetails.phone);
-    
-    if(num.length === 10 && emailRegex.test(formDetails.email)) {
-      setIsLoading(true);
-
-      let params = 
+     e.preventDefault();
+     
+     if(!validateEmail() || !validatePhoneNumber()){
+      return;
+     }
+     let params = 
       {
         "name": formDetails.name ,
         "email": formDetails.email,
         "mobileNumber": Number(formDetails.phone),
         "organization": formDetails.company,
         "city":formDetails.city,
-      }
-      setIsLoading(true);
-      const res =  await registerationAPI(params);
-  
-      if(res.success){
-        setTimeout(()=>{
-          setIsLoading(false);
-          setSuccessful(true);
-        },2000);
-      }
-      else{
+     }
+     try {
+        setIsLoading(true);
+        const res =  await registerationAPI(params);
         setIsLoading(false);
-        setColorSet('#640A02');
-        setSnackbarMessage('Something went wrong!');
-        setSeverity('error');
-        setSuccessSnakbar(true);
-      }
-    }
-    setFormDetails({ name: '', phone: '', email: '', city: '', company: '' })
+  
+        if(res.success){ 
+          setSuccessful(true);
+        }
+        else{
+        showError('Something went wrong');
+      }     
+     } 
+     catch (error) {
+      setIsLoading(false);
+      showError("Submission Failed");
+     }
+
+     setFormDetails({ name: '', phone: '', email: '', city: '', company: '' })
   };
 
 
@@ -109,7 +106,9 @@ export default function HomePage() {
         <Typography variant="h6" className={styles.upperLabel} sx={{ fontWeight:400, color:'#C2C2C2'}}>Be first to be fast!</Typography>
         <Typography variant="body2" className={styles.lowerLabel} sx={{ fontWeight:700, color:'#C2C2C2'}}>Sign up now and get 50% off on shipping for the first 3 months</Typography>
         </Box>
-        {isLoading ? <Loader/>:(!successful ? <Box className={styles.signupBox}>
+        {isLoading ?
+          <Loader/>
+          :(!successful ? <Box className={styles.signupBox}>
           <form className={styles.formDet} sx={{width :'100%'}} onSubmit={handleFormSubmit}>
             <Box className={styles.formContainer}>
               <input 
@@ -133,10 +132,10 @@ export default function HomePage() {
                 placeholder="Phone*"
                 name="phone"
                 type="text"
+                className={styles.inputField}
                 value={formDetails.phone} 
                 onChange={handleChange}
-                className={styles.inputField} 
-                required
+                onBlur={validatePhoneNumber}
                 onKeyDown={(e) => {
                   if (!/^\d$/.test(e.key) && e.key !== "Backspace") {
                     e.preventDefault(); 
@@ -144,7 +143,8 @@ export default function HomePage() {
                   if (formDetails.phone.length >= 10 && e.key !== "Backspace") {
                     e.preventDefault();
                   }
-                }}                       
+                }} 
+                required                      
                  />
             </Box>
 
@@ -154,6 +154,7 @@ export default function HomePage() {
                 name="email" 
                 value={formDetails.email} 
                 onChange={handleChange} 
+                onBlur={validateEmail}
                 className={styles.inputField}  
                 required
                 type="text"  
@@ -202,8 +203,8 @@ export default function HomePage() {
           </form>
         </Box>
           :
-        <Box className={styles.successText}>
-          <Typography >
+        <Box className={styles.successBox}>
+          <Typography className={styles.successText} >
             Thanks for showing interest in Sonic. <br/> We will get back to you within 24 hours.
           </Typography>
         </Box>
@@ -228,13 +229,7 @@ export default function HomePage() {
         </Box>
       </Box>
     </Box>
-    <CustomSnackbar
-        color={colorSet}
-        open={successSnackbar} 
-        handleClose={handleCloseSnackbar} 
-        message={snackbarMessage} 
-        success={severity}
-      />
+    <ToastContainer />
     </div>
   );
 }

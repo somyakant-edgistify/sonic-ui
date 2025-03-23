@@ -8,7 +8,6 @@
   justify-content: center;
   align-items: center;
   height: 100dvh;  
-  /* width: 100vw; */
   box-sizing: border-box;
 }
 .imageContainer {
@@ -22,14 +21,14 @@
 }
 
 .subHeader {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter';
   color:#C2C2C2;
 }
 
 .heroText {
   margin-top: 1% !important;
   color: #FFFFFF4A;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter';
   font-weight: 400;
   line-height: 10px;
   letter-spacing: -4.19px;
@@ -51,7 +50,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   box-sizing: border-box;
   font-family: 'Inter';
 }
@@ -170,7 +169,79 @@
 .followUs{
   font-size: 1rem !important;
 }
-
+.successBox{
+  width: 60%;
+  min-height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.successText{
+  font-size: 2rem !important;
+}
+@media (max-width:7680px) {
+  .imageContainer{
+    width: 30%;
+    height: 10%;
+  }
+  .subHeader{
+    font-size: 5rem !important;
+  }
+  .heroText{
+    font-size: 25rem !important;
+    width: 80% !important;
+  }
+  .upperLabel{
+    font-size: 8rem !important;
+  }
+  .lowerLabel{
+    font-size: 7rem !important;
+   }
+   .signupBox{
+    height: 55%;
+    width: 70%;
+   }
+   .formContainer{
+    width: 80% !important;
+    height: 30%;
+    gap:2%;
+   }
+   .formDet{
+     justify-content: space-between;
+     height: 80%;
+   }
+   .inputField, .selectField, .submitButton{
+    border-radius: 80px !important;
+     font-size: 6rem !important;
+     padding-left: 2.5% !important;
+     height: 85% !important;
+   }
+   .footerText{
+    font-size: 8rem !important;
+   }
+   .foot{
+    height: 10%;
+   }
+   .footerCaption{
+    font-size: 4rem !important;
+  }
+  .followUs{
+    font-size: 4rem !important;    
+  }
+  .socialMedia{
+    font-size: 12rem !important;
+  } 
+  .successBox{
+    width: 60%;
+    min-height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .successText{
+    font-size: 10rem !important;
+  }
+}
 @media (max-width:5120px) {
   .imageContainer{
     width: 30%;
@@ -221,6 +292,16 @@
   .socialMedia{
     font-size: 6rem !important;
   } 
+  .successBox{
+    width: 60%;
+    min-height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .successText{
+    font-size: 7rem !important;
+  }
 }
 @media (max-width:4096px) {
   .imageContainer{
@@ -272,6 +353,15 @@
   .socialMedia{
     font-size: 6rem !important;
   } 
+  .successBox{
+    /* border: 1px solid red; */
+    width: 60%;
+    min-height: 55%;
+   
+  }
+  .successText{
+    font-size: 6rem !important;
+  }
 }
 @media (max-width:3840px){
   .imageContainer{
@@ -327,11 +417,18 @@
    font-size: 2.2rem !important;
   }
   .footerText{
-   /* margin-top: 1% !important; */
    font-size: 5rem !important;
   }
+  .successBox{
+    width: 65%;
+    min-height: 55%;
+   
+  }
+  .successText{
+    font-size: 5rem !important;
+  }
 }
- @media (max-width:2560px){
+@media (max-width:2560px){
  
   .formContainer{
    width: 90% !important;
@@ -351,7 +448,7 @@
   }
   .imageContainer{
    width: 700px;
-   margin: 1.5% !important;
+   margin-top: 1% !important;
  }
  .subHeader{
    font-size: 2rem !important;
@@ -370,16 +467,21 @@
    font-size: 1.5rem !important;
  }
  .socialLink{
-    width: 15% !important;
+    width: 18% !important;
   }
   .socialMedia{
    font-size: 4rem !important;
   }
   .followUs{
-   font-size: 2.5rem !important;
+   font-size: 2rem !important;
   }
-  .successText>p{
-    font-size: 7.5rem;
+  .successBox{
+    width: 65%;
+    min-height: 55%;
+   
+  }
+  .successText{
+    font-size: 4rem !important;
   }
 }
 @media (max-width:1920px){
@@ -419,8 +521,11 @@
   .inputField, .selectField, .submitButton{
     font-size: 2rem !important;
   }
- }
- @media (max-width:1680px){
+  .successText{
+    font-size: 3.5rem !important;
+  }
+}
+@media (max-width:1680px){
   
   .imageContainer{
     position: relative;
@@ -491,6 +596,9 @@
   .socialMedia{
     font-size: 2rem !important;
   }
+  .successText{
+    font-size: 3rem !important;
+  }
 }
 @media (max-width:1440px){
   
@@ -502,10 +610,10 @@
     font-size: 1.2rem !important;
   }
   .upperLabel{
-    font-size: 1rem !important;
+    font-size: 1.2rem !important;
   }
   .lowerLabel{
-    font-size: 0.8rem !important;
+    font-size: 1rem !important;
   }
   .foot{
     width: 95;
@@ -523,8 +631,8 @@
    }
    .heroText{
     width: 90%;
-    font-size: 3.5rem !important;
-    margin-top: 1% !important;
+    font-size: 3.8rem !important;
+    margin-top: 1.5% !important;
    }
    .signupBox{
     height: 50vh;
@@ -564,6 +672,13 @@
   .socialMedia{
     font-size: 1.5rem !important;
   }
+  .successBox{
+    width: 65%;
+    min-height: 55%;   
+  }
+  .successText{
+    font-size: 2.2rem !important;
+  }
 }
 @media (max-width:1024px){
   
@@ -592,7 +707,7 @@
    }
    .heroText{
     width: 90%;
-    font-size: 4.5rem !important;
+    font-size: 4rem !important;
     margin-top: 2% !important;
    }
    .signupBox{
@@ -630,6 +745,14 @@
   .socialMedia{
     font-size: 2rem !important;
   }
+  .successBox{
+    width: 75%;
+    min-height: 55%;
+   
+  }
+  .successText{
+    font-size: 1.8rem !important;
+  }
 }
 @media (max-width:768px){
   
@@ -637,20 +760,20 @@
     width: 280px;
   }
   .subHeader{
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
   }
   .upperLabel{
-    font-size: 1.8rem !important;
+    font-size: 1.3rem !important;
   }
   .lowerLabel{
-    font-size: 1.2rem !important;
+    font-size: 0.9rem !important;
   }
   .foot{
     margin-bottom: 5px !important;
     height: 12%;
    }
    .footerText{
-    font-size: 1.5rem !important;    
+    font-size: 1.3rem !important;    
    }
    .socialLink{
     width: 20%;
@@ -658,8 +781,8 @@
    }
    .heroText{
     width: 90%;
-    font-size: 2.5rem !important;
-    margin-top: 2% !important;
+    font-size: 3rem !important;
+    margin-top: 5% !important;
    }
    .signupBox{
     height: 50vh;
@@ -669,11 +792,11 @@
       width: 97%;
    }
    .formContainer{
-    height: 25%;
+    height: 33%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px !important;
+    gap: 10px !important;
    }
    .inputField, .selectField, .submitButton{
     height: 100% !important ;
@@ -696,21 +819,102 @@
   .socialMedia{
     font-size: 2rem !important;
   }
+  .successBox{
+    width: 75%;
+    min-height: 55%;
+   
+  }
+  .successText{
+    font-size: 1.2rem !important;
+  }
 }
 @media (max-width:480px){
   
   .imageContainer{
-    width: 280px;
+    width: 220px;
   }
   .subHeader{
     font-size: 0.6rem !important;
   }
   .upperLabel{
+    font-size: 0.8rem !important;
+  }
+  .lowerLabel{
+    width: 95% !important;
+    font-size: 0.6rem !important;
+  }
+  .foot{
+    margin-bottom: 5px !important;
+    height: 12%;
+   }
+   .footerText{
+    font-size: 1rem !important; 
+    letter-spacing: normal !important;   
+   }
+   .socialLink{
+    width: 35%;
+    height: 100%;
+   }
+   .heroText{
+    width: 95%;
+    font-size: 2rem !important;
+    margin-top: 2% !important;
+   }
+   .formDet{
+      height: 85%;
+      width: 97%;
+   }
+   .formContainer{
+    height: 33%;
+    display: flex;
+    flex-direction: column;
+    gap: 13% !important;
+   }
+   .inputField, .selectField, .submitButton{
+    height: 45% !important ;
+    border-radius: 25px ;
     font-size: 1rem !important;
+    padding-left: 1.2rem !important;
+   }
+   .formDet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   .formContainer{
+    justify-content: center;
+   }
+  .footerCaption{
+    font-size: 0.4rem !important;
+  }
+  .socialLink{
+    width: 35% !important;
+  }
+  .socialMedia{
+    font-size: 1.5rem !important;
+  }
+  .successBox{
+    width: 85%;   
+  }
+  .successText{
+    font-size: 1rem !important;
+  }
+}
+@media (max-width:320px){
+  
+  .imageContainer{
+    width: 150px;
+  }
+  .subHeader{
+    font-size: 0.5rem !important;
+  }
+  .upperLabel{
+    font-size: 0.8rem !important;
   }
   .lowerLabel{
     width: 80% !important;
-    font-size: 0.8rem !important;
+    font-size: 0.6rem !important;
   }
   .foot{
     margin-bottom: 5px !important;
@@ -726,7 +930,7 @@
    }
    .heroText{
     width: 90%;
-    font-size: 2.5rem !important;
+    font-size: 1.8rem !important;
     margin-top: 2% !important;
    }
    .formDet{
@@ -761,6 +965,12 @@
     width: 35% !important;
   }
   .socialMedia{
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  .successBox{
+    width: 85%;   
+  }
+  .successText{
+    font-size: 0.8rem !important;
   }
 }
