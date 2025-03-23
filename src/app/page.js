@@ -28,7 +28,7 @@ export default function HomePage() {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
   };
   const showError = (message) => {
-    toast.error(message, {autoClose: 2000 , style:{backgroundColor:'#d9d9d9', color:'#000', fontSize: window.innerWidth < 480 ? "10px" : "16px", width: window.innerWidth < 480 ? "90%" : "auto"},
+    toast.error(message, {autoClose: 3000 , style:{backgroundColor:'#d9d9d9', color:'#000', fontSize: window.innerWidth < 480 ? "12px" : "16px", width: window.innerWidth < 480 ? "90%" : "auto"},
     position: window.innerWidth < 480 ? "top-center" : "top-right"})
   };
   const validateEmail = () => {
@@ -230,7 +230,12 @@ export default function HomePage() {
         </Box>
       </Box>
     </Box>
-    <ToastContainer />
+    <ToastContainer
+    position="top-center"
+    style={{
+       zIndex: 9999, 
+       position: "fixed"
+     }} />
     </div>
   );
 }
