@@ -8,6 +8,7 @@ import { useMemo, useState } from "react";
 import { registerationAPI } from "@/services/api";
 import { Loader } from "@/components/Loader/Loader";
 import { ToastContainer, toast } from 'react-toastify';
+import { showToast } from "@/components/Toast";
 
 
 export default function HomePage() {
@@ -28,8 +29,8 @@ export default function HomePage() {
     setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
   };
   const showError = (message) => {
-    toast.error(message, {autoClose: 3000 , style:{backgroundColor:'#d9d9d9', color:'#000'}})
-  };
+    showToast(message, 'error');
+  }
   const validateEmail = () => {
     if (!emailRegex.test(formDetails.email)) {
       showError("Invalid email format");
@@ -115,8 +116,13 @@ export default function HomePage() {
                 placeholder="Name*"
                 name="name" 
                 type="text"
-                onInput={(e) => {
-                  e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, "").slice(0, 50);
+                onKeyDown={(e) => {
+                  if (!/^[a-zA-Z\s]$/.test(e.key) && e.key !== "Backspace") {
+                    e.preventDefault();
+                  }
+                  if (formDetails.name.length >= 50 && e.key !== "Backspace") {
+                    e.preventDefault(); 
+                  }
                 }}
                 value={formDetails.name} 
                 onChange={handleChange} 
@@ -131,9 +137,14 @@ export default function HomePage() {
                 value={formDetails.phone} 
                 onChange={handleChange}
                 onBlur={validatePhoneNumber}
-                onInput={(e) => {
-                  e.target.value = e.target.value.replace(/\D/g, "").slice(0, 10);
-                }}
+                onKeyDown={(e) => {
+                  if (!/^\d$/.test(e.key) && e.key !== "Backspace") {
+                    e.preventDefault(); 
+                  }
+                  if (formDetails.phone.length >= 10 && e.key !== "Backspace") {
+                    e.preventDefault();
+                  }
+                }} 
                 required                      
                  />
             </Box>
@@ -148,9 +159,11 @@ export default function HomePage() {
                 className={styles.inputField}  
                 required
                 type="text"  
-                onInput={(e) => {
-                  e.target.value = e.target.value.slice(0, 50);
-                }}       
+                onKeyDown={(e) => {
+                  if (formDetails.email.length >= 50 && e.key !== "Backspace") {
+                    e.preventDefault();
+                  }
+                }}         
               />
                 <select name="city" value={formDetails.city|| ''} onChange={handleChange}  
                  className={styles.selectField}>
@@ -173,8 +186,10 @@ export default function HomePage() {
                 className={styles.inputField} 
                 required
                 type="text"
-                onInput={(e) => {
-                  e.target.value = e.target.value.slice(0, 50);
+                onKeyDown={(e) => {
+                  if (formDetails.company.length >= 50 && e.key !== "Backspace") {
+                    e.preventDefault(); 
+                  }
                 }}
                  />
               <Button 
@@ -215,7 +230,7 @@ export default function HomePage() {
         </Box>
       </Box>
     </Box>
-    <ToastContainer position="bottom-center"/>
+    <ToastContainer position="top-center" />
     </div>
   );
 }

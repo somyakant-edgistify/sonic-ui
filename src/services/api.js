@@ -17,4 +17,3 @@ export const registerationAPI = async (params={})=>{
         return error.response.data;
     }
 }
-

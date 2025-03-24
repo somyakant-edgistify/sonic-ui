@@ -1,29 +1,36 @@
-import { Geist, Geist_Mono } from "next/font/google";
+"use client"; 
+
 import "./globals.css";
+import ToastNotification from "@/components/Toast";
+import { Inter } from "next/font/google";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = Inter({ subsets: ["latin"] });
+
+const theme = createTheme({
+  typography: {
+    fontFamily: '"Inter", sans-serif',
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          fontFamily: '"Inter", sans-serif',
+        },
+      },
+    },
+  },
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata = {
-  title: "Sonic",
-  description: "From cart to doorstep in hours",
-  icons:{
-    icon:'/sonic_favicon.png'
-  }
-};
-
-export default function RootLayout({ children }) {
+export default function RootLayoutClient({ children }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="en" className={inter.variable}>
+      <body>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <ToastNotification />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
