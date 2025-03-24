@@ -24,7 +24,7 @@ const theme = createTheme({
 
 export default function RootLayoutClient({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en">
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />

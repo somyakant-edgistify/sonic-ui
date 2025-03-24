@@ -4,8 +4,8 @@ export const metadata = {
   title: "Sonic",
   description: "From cart to doorstep in hours",
   icons: {
-    icon: "/favicon.png", 
-    shortcut: "/favicon.png",
+    icon: "/favicon.ico", 
+    shortcut: "/favicon.ico",
   },
 };
 
